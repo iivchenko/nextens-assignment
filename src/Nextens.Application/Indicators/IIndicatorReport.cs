@@ -1,9 +1,9 @@
 ﻿namespace Nextens.Application.Indicators
 {
-    public interface IIndicatorReport<TData>
+    public sealed class IndicatorReport<TData>
     {
-        Guid CustomerId { get; }
+        public Guid CustomerId { get; init; }
 
-        IEnumerable<TData> Data { get; }
+        public IEnumerable<TData> Data { get; init; } = new List<TData>();
     }
 }

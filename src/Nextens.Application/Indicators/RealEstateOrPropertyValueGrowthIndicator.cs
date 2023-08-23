@@ -2,7 +2,7 @@
 {
     public sealed class RealEstateOrPropertyValueGrowthIndicator : IIndicator<RealEstateOrPropertyValueGrowthIndicatorReportData>
     {
-        public Task<IIndicatorReport<RealEstateOrPropertyValueGrowthIndicatorReportData>> Process(Guid customerId)
+        public Task<IndicatorReport<RealEstateOrPropertyValueGrowthIndicatorReportData>> Process(Guid customerId)
         {
             throw new NotImplementedException();
         }

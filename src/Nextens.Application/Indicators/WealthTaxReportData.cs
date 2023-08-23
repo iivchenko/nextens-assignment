@@ -1,4 +1,4 @@
 ﻿namespace Nextens.Application.Indicators
 {
-    public sealed record WealthTaxReportData() : ReportData;
+    public sealed record WealthTaxReportData(decimal TotalCapital, uint Year) : ReportData;
 }

@@ -2,7 +2,7 @@
 {
     public sealed class IncomeVolatilityIndicator : IIndicator<IncomeVolatilityIndicatorReportData>
     {
-        public Task<IIndicatorReport<IncomeVolatilityIndicatorReportData>> Process(Guid customerId)
+        public Task<IndicatorReport<IncomeVolatilityIndicatorReportData>> Process(Guid customerId)
         {
             throw new NotImplementedException();
         }

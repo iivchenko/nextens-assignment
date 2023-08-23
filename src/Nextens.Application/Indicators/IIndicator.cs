@@ -2,6 +2,6 @@
 {
     public interface IIndicator<TReportData>
     {
-        Task<IIndicatorReport<TReportData>> Process(Guid customerId);
+        Task<IndicatorReport<TReportData>> Process(Guid customerId);
     }
 }
