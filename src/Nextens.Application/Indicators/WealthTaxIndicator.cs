@@ -5,7 +5,7 @@
     // Check this indicator only for a customer’s most recent year
     public sealed class WealthTaxIndicator : IIndicator<WealthTaxReportData>
     {
-        public const int Threshold = 200000;
+        public readonly int TotalCapitalThreshold = 200000;
 
         private readonly ICustomerIncomeRepository _incomeRepository;
 
@@ -18,7 +18,7 @@
         {
             var income =
                 await _incomeRepository
-                    .Read(customerId, _ => true)
+                    .Read(customerId)
                     .OrderByDescending(x => x.Year)
                     .FirstOrDefaultAsync();
 
@@ -29,7 +29,7 @@
 
             var capital = income.BankBalanceNational + income.BankbalanceInternational + income.StockInvestments;
 
-            return capital > Threshold
+            return capital > TotalCapitalThreshold
                 ? new IndicatorReport<WealthTaxReportData> { CustomerId = customerId, Data = new[] { new WealthTaxReportData(capital, income.Year) } }
                 : new IndicatorReport<WealthTaxReportData> { CustomerId = customerId };
         }

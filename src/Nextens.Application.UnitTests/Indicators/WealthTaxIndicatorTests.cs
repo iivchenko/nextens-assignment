@@ -25,7 +25,7 @@ namespace Nextens.Application.UnitTests.Indicators
             var customerId = Guid.NewGuid();
 
             _incomeRepository
-                .Read(customerId, _ => true)
+                .Read(customerId)
                 .Returns(Enumerable.Empty<CustomerIncome>().ToAsyncEnumerable());
 
             // Act
@@ -50,7 +50,7 @@ namespace Nextens.Application.UnitTests.Indicators
             };
 
             _incomeRepository
-                .Read(Arg.Any<Guid>(), Arg.Any<Expression<Func<CustomerIncome, bool>>>())
+                .Read(Arg.Any<Guid>())
                 .Returns(incoms.ToAsyncEnumerable());
 
             // Act
@@ -76,7 +76,7 @@ namespace Nextens.Application.UnitTests.Indicators
             };
 
             _incomeRepository
-                .Read(customerId, Arg.Any<Expression<Func<CustomerIncome, bool>>>()) 
+                .Read(customerId) 
                 .Returns(incoms.ToAsyncEnumerable());
 
             // Act
