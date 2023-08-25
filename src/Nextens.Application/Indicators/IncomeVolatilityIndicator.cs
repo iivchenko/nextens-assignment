@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Nextens.Application.Indicators
+﻿namespace Nextens.Application.Indicators
 {
     // If the Income between two sequential years is significantly (50% difference) higher or lower, record the following.
     // List the details of the difference by displaying both years, Income and % of change.
@@ -51,7 +49,7 @@ namespace Nextens.Application.Indicators
                         SecondYear = x.SecondYear,
                         Difference = x.Difference,
                         HigherYearIncome = x.HigherYearIncome,
-                        PercentageIncrease = x.Difference * 100 / x.HigherYearIncome
+                        PercentageIncrease = x.HigherYearIncome != 0 ? x.Difference * 100 / x.HigherYearIncome : 0
                     })
                     .Where(x => Math.Abs(x.PercentageIncrease) >= 50)
                     .Select(x => new IncomeVolatilityIndicatorReportData
@@ -60,7 +58,8 @@ namespace Nextens.Application.Indicators
                         x.SecondYear,
                         x.Difference,
                         x.PercentageIncrease
-                    ));
+                    ))
+                    .ToList();
 
             return new IndicatorReport<IncomeVolatilityIndicatorReportData> { CustomerId = customerId, Data = data };
         }

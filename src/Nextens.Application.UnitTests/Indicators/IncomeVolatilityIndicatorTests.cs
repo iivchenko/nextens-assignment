@@ -74,7 +74,6 @@ namespace Nextens.Application.UnitTests.Indicators
                 new(Guid.NewGuid(), customerId, 2021, 5000, 0, 0, 0, 0),
                 new(Guid.NewGuid(), customerId, 2020, 4000, 0, 0, 0, 0),
                 new(Guid.NewGuid(), customerId, 2019, 0, 0, 0, 0, 0)
-
             };
 
             _incomeRepository
